@@ -6,28 +6,46 @@
 " CREATION    : Wed Apr 20 01:08:50 CDT 2016
 " ===========================================================================
 
-call markdown#setup()
+setlocal nolinebreak
+setlocal foldlevel=2
+setlocal noexpandtab
 
-" Headers for markdown documents
-nnoremap <leader>h1  I#<space><ESC>
-nnoremap <leader>h2  I##<space><ESC>
-nnoremap <leader>h3  I###<space><ESC>
-nnoremap <leader>h4  I####<space><ESC>
-nnoremap <leader>h5  I#####<space><ESC>
-nnoremap <leader>h6  I######<space><ESC>
-
-" Generate the HTML document
-nnoremap <F9> call markdown#preview()<CR><C-l>
-
-" Format key mappings
-nnoremap <C-b> ciw****<ESC>hP " Markdown make text style "bold"
-nnoremap <C-k> ciw**<ESC>P    " Markdown make text style "italic"
-nnoremap <C-c> ciw``<ESC>P    " Markdown make text style "code"
-
-vnoremap <C-b> c****<ESC>hP " Markdown make text style "bold"
-vnoremap <C-k> c**<ESC>P    " Markdown make text style "italic"
-vnoremap <C-c> c``<ESC>P    " Markdown make text style "code"
 
 " Folding
-au BufEnter *.md setlocal foldexpr=markdown#level()
-au BufEnter *.md setlocal foldmethod=expr
+autocmd BufEnter *.md setlocal foldexpr=markdown#level()
+autocmd BufEnter *.md setlocal foldmethod=expr
+
+" Toggle headers for markdown documents
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>1
+      \ :call markdown#toggleheading(1)<CR>
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>2
+      \ :call markdown#toggleheading(2)<CR>
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>3
+      \ :call markdown#toggleheading(3)<CR>
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>4
+      \ :call markdown#toggleheading(4)<CR>
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>5
+      \ :call markdown#toggleheading(5)<CR>
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>6
+      \ :call markdown#toggleheading(6)<CR>
+
+" Generate the HTML document
+autocmd
+      \ FileType markdown nnoremap <buffer> <silent> <leader>p
+      \ :call markdown#preview()<CR><C-l>
+
+" Format key mappings
+autocmd FileType markdown nnoremap <buffer> <C-b> ciw****<ESC>hP
+autocmd FileType markdown nnoremap <buffer> <C-k> ciw**<ESC>P
+autocmd FileType markdown nnoremap <buffer> <C-c> ciw``<ESC>P
+
+autocmd FileType markdown vnoremap <buffer> <C-b> c****<ESC>hP
+autocmd FileType markdown vnoremap <buffer> <C-k> c**<ESC>P
+autocmd FileType markdown vnoremap <buffer> <C-c> c``<ESC>P
+

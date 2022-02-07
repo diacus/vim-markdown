@@ -7,39 +7,38 @@
 " VERSION     : 2.1
 " ===========================================================================
 
-" Function taken from Stack Overflow
-" https://stackoverflow.com/questions/3828606/vim-markdown-folding
+let s:headings = [
+      \{ 'pattern': '^# .*$',      'level': '>1', 'value': 1 },
+      \{ 'pattern': '^## .*$',     'level': '>2', 'value': 2 },
+      \{ 'pattern': '^### .*$',    'level': '>3', 'value': 3 },
+      \{ 'pattern': '^#### .*$',   'level': '>4', 'value': 4 },
+      \{ 'pattern': '^##### .*$',  'level': '>5', 'value': 5 },
+      \{ 'pattern': '^###### .*$', 'level': '>6', 'value': 6 }
+      \]
+
 function! markdown#level()
-  if getline(v:lnum) =~ '^# .*$'
-    return ">1"
-  endif
-  if getline(v:lnum) =~ '^## .*$'
-    return ">2"
-  endif
-  if getline(v:lnum) =~ '^### .*$'
-    return ">3"
-  endif
-  if getline(v:lnum) =~ '^#### .*$'
-    return ">4"
-  endif
-  if getline(v:lnum) =~ '^##### .*$'
-    return ">5"
-  endif
-  if getline(v:lnum) =~ '^###### .*$'
-    return ">6"
-  endif
+  for heading in s:headings
+    if getline(v:lnum) =~ heading.pattern
+      return heading.level
+    endif
+  endfor
   return "="
 endfunction
 
-function markdown#setup()
-  setlocal shiftwidth=2
-  setlocal tabstop=2
-  setlocal nolinebreak
-  setlocal foldlevel=2
-  setlocal expandtab
+function markdown#toggleheading(level)
+  let heading = s:headings[a:level - 1]
+  let ln = getline(".")
+
+  if ln =~ heading.pattern
+    substitute/^#\+ //
+  else
+    let headingmark = repeat("#", heading.value)
+    let subcmd = "s/^\\(#\\+ \\)\\?/" . headingmark . " /"
+    execute subcmd
+  endif
 endfunction
 
 function! markdown#preview()
   write
-  execute "!pandoc % | lynx -stdin"
+  execute '!pandoc % | lynx -stdin'
 endfunction

@@ -1,25 +1,28 @@
-INTRODUCTION                                                      *vim-markdown*
+MARKDOWN EDITING                                                  *vim-markdown*
 
-                                                   _ _                      ~
-                                                __| (_) __ _  ___ _   _ ___ ~
-                                               / _` | |/ _` |/ __| | | / __|~
-                                              | (_| | | (_| | (__| |_| \__ \~
-                                               \__,_|_|\__,_|\___|\__,_|___/~
-       _                                      _       _                     ~
-__   _(_)_ __ ___        _ __ ___   __ _ _ __| | ____| | _____      ___ __  ~
-\ \ / / | '_ ` _ \ _____| '_ ` _ \ / _` | '__| |/ / _` |/ _ \ \ /\ / / '_ \ ~
- \ V /| | | | | | |_____| | | | | | (_| | |  |   < (_| | (_) \ V  V /| | | |~
-  \_/ |_|_| |_| |_|     |_| |_| |_|\__,_|_|  |_|\_\__,_|\___/ \_/\_/ |_| |_|~
-                                                                            ~
+        _                                      _       _                     ~
+ __   _(_)_ __ ___        _ __ ___   __ _ _ __| | ____| | _____      ___ __  ~
+ \ \ / / | '_ ` _ \ _____| '_ ` _ \ / _` | '__| |/ / _` |/ _ \ \ /\ / / '_ \ ~
+  \ V /| | | | | | |_____| | | | | | (_| | |  |   < (_| | (_) \ V  V /| | | |~
+   \_/ |_|_| |_| |_|     |_| |_| |_|\__,_|_|  |_|\_\__,_|\___/ \_/\_/ |_| |_|~
+                                                                             ~
 
                         Markdown settings for Vim editor
                                    by @diacus
 
 ==============================================================================
 
-- <leader>p displays the document preview, it depends on pandoc and lynx
-
-NORMAL MODE MAPPINGS                                         *markdown-mappings*
+NORMAL MODE MAPPINGS                                  *markdown-normal-mappings*
 
 <leader>p  Displays the document preview, you need to have pandoc and lynx
            installed on your system
+
+<C-b>      Change word under cursor weight to bold
+<C-k>      Change word under cursor weight to italic
+<C-c>      Change word under cursor weight to mono spaced
+
+VISUAL MODE MAPPINGS                                  *markdown-visual-mappings*
+
+<C-b>      Change current visual selection weight to bold
+<C-k>      Change current visual selection weight to italic
+<C-c>      Change current visual selection weight to mono spaced
