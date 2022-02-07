@@ -17,6 +17,13 @@ NORMAL MODE MAPPINGS                                  *markdown-normal-mappings*
 <leader>p  Displays the document preview, you need to have pandoc and lynx
            installed on your system
 
+<leader>1  Toggles current line format to heading 1
+<leader>2  Toggles current line format to heading 2
+<leader>3  Toggles current line format to heading 3
+<leader>4  Toggles current line format to heading 4
+<leader>5  Toggles current line format to heading 5
+<leader>6  Toggles current line format to heading 6
+
 <C-b>      Change word under cursor weight to bold
 <C-k>      Change word under cursor weight to italic
 <C-c>      Change word under cursor weight to mono spaced
