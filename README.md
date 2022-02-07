@@ -4,15 +4,23 @@ After some years I decided to split up my personal configuration into indivirual
 plugins, so they might be shared and maintained easier. This is the markdown
 portion.
 
-## Install
+## Installation
 
-I recommend using a plugin manager like vim-plug by {AUTHOR}
+Install it like any other plugin, I recommend using the plugin manager of our
+choice. For example `plug.vim` at your `$HOME/.vimrc` add:
 
+```
+call plug#begin()
+" other plugins...
+Plug 'diacus/vim-markdown'
+" other plugins...
+call plug#end()
+```
 
+## Getting help
 
-```python
-from os import path
+Once installed, you can see the documentation within the vim's help system
 
-
-print(f"Hello from {os.name}")
+```
+:help vim-markdown
 ```
